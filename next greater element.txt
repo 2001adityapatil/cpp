@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int> a = {2,4};
+    vector<int> b = {1,2,3,4};
+    vector<int> c = {};
+    int element;
+    for(int i = 0; i < a.size(); i++)
+    {
+        element = a[i];
+        for(int j = 0; j < b.size(); j++)
+        {
+            if(element == b[j])
+            {
+                if(j == (b.size()-1))
+                {
+                    c.push_back(-1);
+                    break;
+                }
+                for(int p = j+1; p < b.size(); p++)
+                {
+                    if(element < b[p])
+                    {
+                        c.push_back(b[p]);
+                        break;
+                    }
+                    if(p == b.size()-1)
+                    {
+                        c.push_back(-1);
+                        break;
+                    }
+                }
+                
+                break;
+            }
+           
+        }
+    }
+    
+    for(int i = 0; i < c.size(); i++)
+    cout<<c[i]<<"\t";
+    
+    return 0;
+}
