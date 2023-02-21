@@ -16,47 +16,27 @@ vector<char> ans = {};
 	{
 		if(str[i] == '[' || str[i] == '{' || str[i] == '(')
 		ans.push_back(str[i]);
-		else if(ans.size() == 0 && i == 0)
-		return false;
 		else
 		{
-            if (ans.size() == 0)
-            return false;
-			if(str[i] == ']')
+			if(ans.size() == 0)
+			return false;
+			else
 			{
-				char ch = '[';
-                if(ch == ans[ans.size()-1])
+				if(str[i] == ']' && ans[ans.size()-1] == '[') 
+				ans.pop_back();
+				else if(str[i] == ')' && ans[ans.size()-1] == '(')
+				ans.pop_back();
+				else if(str[i] == '}' && ans[ans.size()-1] == '{')
 				ans.pop_back();
 				else
 				return false;
 			}
-			if(str[i] == ')')
-			{
-				char ch = '(';
-			    if(ch == ans[ans.size()-1])
-				ans.pop_back();
-				else
-				return false;
-			}
-			if(str[i] == '}')
-			{
-				char ch = '{';
-				if(ch == ans[ans.size()-1])
-				ans.pop_back();
-				else
-				return false;
-			}
-		}
-		
-		
-		
+		}	
 	}
-	
-	
-//	for(int i = 0; i < ans.size(); i++)
+
 	if(ans.size() == 0)
 	return true;
-	// else
+
 	return false;
     }
 };
